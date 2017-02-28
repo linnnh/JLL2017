@@ -1,9 +1,9 @@
 # JLL2017
-JLL 2017
+### Project Desicription:
 
-I made a change!!
+An interview chatbot has a plant form factor
 
-Project Desicription: An interview chatbot has a plant form factor
+### Team Name: 
 
-Team Name: JLL (JiLiLinne)
+JLL (JiLiLinne)
 
