@@ -1,3 +1,5 @@
+#Design Brief
+
 - todo list:
   - Visual: - Jiwon
     - Plant: pictures, preparing materials
