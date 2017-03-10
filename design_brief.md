@@ -6,9 +6,27 @@
   - Development: - Linne
     - Assignment 6 (Nonverbal + verbal js): figure out
   - Dialog: - Li
-    - FSM
-    - Make a conversation (a transcript)
-    - Engagement / Suggestion / Response
+    - FSM: Make a conversation (a transcript)
+      - Plant's responses
+      - Engagement / Suggestion / Responses
+        - Simple Implementation: Dictionary-and-Match (Matching), Frequency (Counting)
+        
+ ---
+    - Use Cases
+      - Scenario 1:
+      - Scenario 2:
+      - Scenario 3:
+      
+    - Specification
+      - Feature 1:
+      - Feature 2:
+      - Feature 3:
+      
+    - Prototype
+    
+    - Development
+    
+---
 
 - Additional small things to do:
   - User Research: interviewing those people who are preparing to interview
