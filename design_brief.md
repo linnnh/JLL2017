@@ -13,14 +13,19 @@
         
  ---
     - Use Cases
-      - Scenario 1:
-      - Scenario 2:
+      - Scenario 1: Graduate design students trying to get a graphic design job. Carrer fair is coming soon.
+      - Scenario 2: non-design major person who wants to change job into graphic design.
       - Scenario 3:
       
     - Specification
-      - Feature 1:
-      - Feature 2:
-      - Feature 3:
+      - Feature 1:Able to provide graphic design question.
+      - Feature 2:Able to give response base on the length of answer, 
+      - Feature 3:Able to give response base on dictionary nagative words vs positive words,
+      - Feature 4:Hitory feature to store your response
+      - Feature 5:Able to change images/angles/colors based on user's response (E.g. "Waving hands", "Changing eye colors", "Nodding", "Blinking"...)
+      - Feature 6:Able to greet users (E.g. "Hello", "Bye")
+      - Feature 7:Play sound effects along with Plant-bot's response.
+      - Feature 8:HTML-based Speech Recognition. It's cross-platform, responsive use.
       
     - Prototype
     
