@@ -16,7 +16,7 @@ Project presentations: Milestone 1.
 
 6. Create "milestone1" folder in your project's gitHub repository and update it with all the relevant materials necessary for a third-party to reproduce your project. These should include:
 
-  - Requirements (from item 3).
+  	- Requirements (from item 3).
 	- Industrial design, schematics, code (from item 4)
 	- Photos and/or vodeos of your use case demo (from item 5).
 
