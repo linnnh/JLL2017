@@ -1,7 +1,7 @@
 # Quick Link
 
  - [1st Presentation: Design Brief](https://docs.google.com/presentation/d/16h8q5aKKRUvPiBJzeXBbr6RAP-h_7Bh523To2R8XHOw/edit#slide=id.g1cf1efc38e_1_6) 
- - [2nd Presentation: Milestone 2](https://docs.google.com/presentation/d/1XJhfBKSCLkT3wpc6JbNLjI4AcdtmfCjXUWKwkn6lxmw/edit#slide=id.g1d0228a998_1_13)
+ - [2nd Presentation: Milestone 1](https://docs.google.com/presentation/d/1XJhfBKSCLkT3wpc6JbNLjI4AcdtmfCjXUWKwkn6lxmw/edit#slide=id.g1d0228a998_1_13)
 
 ---
 
