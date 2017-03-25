@@ -1,9 +1,16 @@
-Assignment 7.
+# Quick Link
+
+ - [1st Presentation: Design Brief](https://docs.google.com/presentation/d/16h8q5aKKRUvPiBJzeXBbr6RAP-h_7Bh523To2R8XHOw/edit#slide=id.g1cf1efc38e_1_6) 
+ - [2nd Presentation: Milestone 2](https://docs.google.com/presentation/d/1XJhfBKSCLkT3wpc6JbNLjI4AcdtmfCjXUWKwkn6lxmw/edit#slide=id.g1d0228a998_1_13)
+
+---
+
+# Assignment 7
 
 Part 1 (In class and on GitHub)
 
 Project presentations: Milestone 1.
-
+ 
 1. Specify who does what on your team.
 
 2. Provide a reasonably detailed use case or two. Use any medium available for a compelling delivery: video, hands on mock-up experience, simulation on a computer, Wizard-of-Oz demo, etc.
