@@ -1,15 +1,4 @@
 #Design Brief
-
-- todo list:
-  - Visual: - Jiwon
-    - Plant: pictures, preparing materials
-  - Development: - Linne
-    - Assignment 6 (Nonverbal + verbal js): figure out
-  - Dialog: - Li
-    - FSM: Make a conversation (a transcript)
-      - Plant's responses
-      - Engagement / Suggestion / Responses
-        - Simple Implementation: Dictionary-and-Match (Matching), Frequency (Counting)
         
  ---
     - Use Cases
@@ -46,5 +35,13 @@
 
 
 
-- Deliverables for next week:
-  - 
+- todo list:
+  - Visual: - Jiwon
+    - Plant: pictures, preparing materials
+  - Development: - Linne
+    - Assignment 6 (Nonverbal + verbal js): figure out
+  - Dialog: - Li
+    - FSM: Make a conversation (a transcript)
+      - Plant's responses
+      - Engagement / Suggestion / Responses
+        - Simple Implementation: Dictionary-and-Match (Matching), Frequency (Counting)
