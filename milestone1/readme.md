@@ -36,7 +36,8 @@ Next project milestone presentations will be in two weeks after Milestone 1. Mil
 ---
 
 
-#Design Brief
+
+### Some discussion...
         
  ---
     - Use Cases
@@ -59,8 +60,6 @@ Next project milestone presentations will be in two weeks after Milestone 1. Mil
     - Development
     
 ---
-
-### Some discussion...
 
 - Additional small things to do:
   - User Research: interviewing those people who are preparing to interview
