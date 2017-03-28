@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Let's practice interview!</title>
+    <!--[if IE]><script type="text/javascript" src="excanvas.js"></script><![endif]-->
+
+
+  <!-- CSS Styles -->
+    <style>
+    body {
+      font-family: 'Overpass Mono', monospace;
+      margin-top: 0rem;
+    }
+
+    .speech {
+      font-family: 'Overpass Mono', monospace;
+      border-bottom: 5px rgba(255, 235, 59, 1) solid; 
+      width: 50vw; 
+      padding: 0; 
+      margin: 0 auto;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+   .speech input {
+    font-family: 'Overpass Mono', monospace;
+      border: 0; 
+      font-size: 1.5rem;
+      width: 40vw; 
+      display: inline-block; 
+      height: 40px;
+      background-color: transparent;
+    }
+
+    .subtitle {
+      width: 50vw;
+      padding: 0;
+      margin: 0 auto;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 1rem;
+      font-size: 0.8rem;
+    }
+
+    #canvasDiv {
+      display: block;
+      margin: auto;
+
+    }
+
+    .speech img {float: right; width: 40px;}
+
+    #searchForm {
+      position: fixed;
+      top: 5rem;
+      left: 5rem;
+    }
+
+
+  </style>
+
+  </head>
+  <body>
+    <div id="canvasDiv"></div>
+
+    <!-- Search Form -->
+    <div id="searchForm">
+      <form id="labnol" method="get" action="https://www.google.com/search">
+        <div class="speech">
+          <input type="text" name="q" id="transcript" placeholder="Practice interview with me." />
+          <img onclick="startDictation()" src="//i.imgur.com/cHidSVu.gif" />
+        </div>
+      </form>
+      
+      <!-- <div class="subtitle"><p>Behavirol Questions | Oddball Questions</p></div> -->
+    </div>
+
+
+
+    <script type="text/javascript" src="nonverbal.js"></script>
+    <script type="text/javascript" src="verbal.js"></script>
+    <script type="text/javascript">
+    	prepareCanvas(document.getElementById("canvasDiv"), 1000, 1000);
+		  document.getElementById("canvasDiv").onmousedown = function() { 
+			 jump(); 
+      }
+    </script>
+  </body>
+</html>
