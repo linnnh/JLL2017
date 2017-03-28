@@ -103,7 +103,7 @@ function redraw() {
   // clears the canvas
   canvas.width = canvas.width; 
 
-  context.drawImage(images["pbody"], x , y);
+  context.drawImage(images["pbody"], x + 335 , y + 500);
 
 
   // Left Eye
