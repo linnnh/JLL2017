@@ -39,7 +39,6 @@ Next project milestone presentations will be in two weeks after Milestone 1. Mil
 
 ### Some discussion...
         
- ---
     - Use Cases
       - Scenario 1: Graduate design students trying to get a graphic design job. Carrer fair is coming soon.
       - Scenario 2: non-design major person who wants to change job into graphic design.
