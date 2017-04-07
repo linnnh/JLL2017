@@ -26,7 +26,7 @@ var breathMax = 2;
 var breathInterval = setInterval(updateBreath, 1000 / fps);
 var maxEyeHeight = 14;
 var curEyeHeight = maxEyeHeight;
-var curEyeColor = "black"
+var curEyeColor = "white"
 var eyeOpenTime = 0;
 var timeBtwBlinks = 4000;
 var blinkUpdateTime = 200;                    
@@ -36,7 +36,7 @@ var numFramesDrawn = 0;
 var curFPS = 0;
 var jumping = false;
 
-var lip = 630;
+var lip = 370;
 
 
 function updateFPS() {
@@ -98,26 +98,30 @@ function redraw() {
 
   var x = 0;
   var y = 0;
-  var jumpHeight = 45;
+  var jumpHeight = 25;
   
   // clears the canvas
   canvas.width = canvas.width; 
 
-  context.drawImage(images["pbody"], x + 335 , y + 500);
+  context.drawImage(images["pbody"], x , y); //330 500
 
 
   // Left Eye
-  drawEllipse(x + 360, y + 600 - breathAmt, 10, curEyeHeight, curEyeColor); 
+  drawEllipse(x + 520, y + 380 - breathAmt, 12, curEyeHeight, curEyeColor); 
 
   // Right Eye
-  drawEllipse(x + 380, y + 600 - breathAmt, 10, curEyeHeight, curEyeColor); 
+  drawEllipse(x + 550, y + 380 - breathAmt, 12, curEyeHeight, curEyeColor); 
 
 
+  context.strokeStyle="#FFFFFF";
   context.beginPath();
-  context.moveTo(360, 620);
-  context.bezierCurveTo(360, lip, 380, lip, 380, 620);
+  context.moveTo(520, 400);
+  // context.bezierCurveTo(cp1x,cp1y,cp2x,cp2y,x,y);
+  // context.bezierCurveTo(520, 480, 560, 480, 560 ,450);
+    context.bezierCurveTo(520, 420, 550, 420, 550 ,400);
   context.lineWidth = 2;
   context.stroke();
+
   
 
   // noticed the y is changing here.
@@ -126,15 +130,15 @@ function redraw() {
   }
 
   if (jumping) {
-	context.drawImage(images["parmleft"], x + 250, y + 600 - breathAmt);
+	context.drawImage(images["parmleft"], x + 440, y + 120 - breathAmt);
   } else {
-	context.drawImage(images["parmleft"], x + 255, y + 600 - breathAmt);
+	context.drawImage(images["parmleft"], x + 440, y + 160 - breathAmt);
   }
 
   if (jumping) {
-	context.drawImage(images["parmright"], x + 400, y + 550 - breathAmt);
+	context.drawImage(images["parmright"], x + 560, y + 90 - breathAmt);
   } else {
-	context.drawImage(images["parmright"], x + 400, y + 550 - breathAmt);
+	context.drawImage(images["parmright"], x + 560, y + 130 - breathAmt);
   } 
 
 

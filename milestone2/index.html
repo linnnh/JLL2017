@@ -14,7 +14,7 @@
 
     .speech {
       font-family: 'Overpass Mono', monospace;
-      border-bottom: 5px rgba(255, 235, 59, 1) solid; 
+      border-bottom: 5px white solid; 
       width: 50vw; 
       padding: 0; 
       margin: 0 auto;
@@ -53,7 +53,8 @@
     #searchForm {
       position: fixed;
       top: 5rem;
-      left: 5rem;
+      left: 50%;
+      transform: translateX(-50%);
     }
 
 
@@ -71,70 +72,22 @@
           <img onclick="startDictation()" src="//i.imgur.com/cHidSVu.gif" />
         </div>
       </form>
-      
-      <!-- <div class="subtitle"><p>Behavirol Questions | Oddball Questions</p></div> -->
     </div>
 
-  <div class="container theme-showcase" role="main">
 
-    <div class="jumbotron">
-      <textarea id="txt"></textarea>
-      <pre id="result"></pre>
-    </div>
-  </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
-  <!-- English words -->
-  <script src="afinn_en.js"></script>
-  <!-- Danish words -->
-  <script src="afinn_da.js"></script>
-  <!-- Algorithm -->
-  <script src="sentiment.js"></script>
-
-  <script>
-
-    // var afinn = afinn_en;
-
-        // function setLanguage(languageName) {
-        //   $("#result").empty();
-        //   $("#languageSelector").text(languageName);
-        //   switch(languageName) {
-        //     case 'English': {
-        //       afinn = afinn_en; 
-        //       break;
-        //     }
-        //     case 'Danish': {
-        //       afinn = afinn_da; 
-        //       break;
-        //     }
-        //   }
-        // }
-
-    // $(document).ready(function() {
-
-    //   // $(".languageSelector").on( "click", function(e) {
-    //   //   e.preventDefault();
-    //   //   setLanguage($(this).text());
-    //   // });
-
-    //   $('#txt').focus();
-    //   $('#txt').bind('input propertychange', function() {
-    //     $('#result').html(JSON.stringify(sentiment($('#txt').val()), undefined, 2));
-    //   });
-    // });
-
-
-  </script>
-
-
+    <!-- English words -->
+    <script src="afinn_en.js"></script>
+    <!-- Algorithm -->
+    <script src="sentiment.js"></script>
 
 
     <script type="text/javascript" src="nonverbal.js"></script>
     <script type="text/javascript" src="verbal.js"></script>
     <script type="text/javascript">
-    	prepareCanvas(document.getElementById("canvasDiv"), 1000, 1000);
+    	prepareCanvas(document.getElementById("canvasDiv"), 1000, 600);
 		  document.getElementById("canvasDiv").onmousedown = function() { 
 			 jump(); 
       }

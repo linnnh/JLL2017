@@ -1,21 +1,4 @@
-/* verbal part */
-
-// var oddballsQuestions = [ 
-//   "When a hot dog expands, in which direction does it split and why?......by Space X",
-//   "Would you rather fight 1 horse-sized duck, or 100 duck-sized horses?......by Whole Foods",
-//   "If you’re the CEO, what are the first three things you check about the business when you wake up?......by Dropbox",
-//   "What would the name of your debut album be?......by Urban Outfitters",
-//   "What would you do if you found a penguin in the freezer?......by Trader Joe's",
-//   "How many basketballs would fit in this room?......by Delta Airlines",
-//   "If you had $2,000, how would you double it in 24 hours?...... by Uniqlo",
-//   "What would you do if you were the one survivor in a plane crash?......by Airbnb",
-//   "What’s your favorite 90s jam?......by Squarespace",
-//   "Who would win in a fight between Spiderman and Batman?......by Stanford University",
-//   "What did you have for breakfast?......by Banana Republic",
-//   "What’s your favorite Disney Princess?......by Cold Stone Creamery"
-//   ];
-
-var bq = [ 
+var questions = [ 
   "Where do you see yourself in five years? Ten years?",
   "Why do you want to leave your current company?",
   "What can you offer us that someone else can not?",
@@ -30,18 +13,32 @@ var bq = [
   "What are your hobbies?"
   ];
 
-
 var state = "initial"
 var slowBreathInc = 0.1
 var fastBreathInc = 0.6
 var slowTimeBetweenBlinks = 4000
 var fastTimeBetweenBlinks = 500
+var user_score = 0
+var afinn = afinn_en;
 
-// audio
-var audio = new Audio('close.mp3');
-function playSound() {
-    audio.play();
-}
+var user_word_count = 0
+var word_count_evaluation = "placeholder"
+
+var user_answer = "placeholder"
+var user_answer_array = ["you have no answer......because, you haven't practiced...... hmm...... therefore......"];
+
+var practiced_q = "placeholder"
+var practiced_q_array = ["you haven't practiced!"];
+
+var ramdon_question = "placeholder"
+
+
+
+// // audio
+// var audio = new Audio('close.mp3');
+// function playSound() {
+//     audio.play();
+// }
 
 
 function startDictation() {
@@ -50,7 +47,6 @@ function startDictation() {
 
     var recognition = new webkitSpeechRecognition();
 
-    /* Shift + reload = reload without using cache */
     /* Nonverbal actions at the start of listening */
     setTimeBetweenBlinks(fastTimeBetweenBlinks);
     setBreathInc(slowBreathInc);
@@ -72,13 +68,13 @@ function startDictation() {
       /* Nonverbal actions at the end of listening */
       setTimeBetweenBlinks(slowTimeBetweenBlinks);
       jump(); //perform a nonverbal action from nonverbal.js
-      setEyeColor("black");
+      setEyeColor("white");
+      // // Play sound effect, and delay 2.5s
+      // setTimeout(playSound, 2500)
+
 
       var bot_response = decide_response(user_said)
       speak(bot_response)
-
-      // Play sound effect, and delay 2.5s
-      //setTimeout(playSound, 2500)
 
       //`document.getElementById('labnol').submit();
     };
@@ -90,117 +86,106 @@ function startDictation() {
   }
 }
 
-
-
-    var afinn = afinn_en;
-
-    // function setLanguage(languageName) {
-    //   $("#result").empty();
-    //   $("#languageSelector").text(languageName);
-    //   switch(languageName) {
-    //     case 'English': {
-    //       afinn = afinn_en; 
-    //       break;
-    //     }
-    //     case 'Danish': {
-    //       afinn = afinn_da; 
-    //       break;
-    //     }
-    //   }
-    // }
-
-    $(document).ready(function() {
-
-      // $(".languageSelector").on( "click", function(e) {
-      //   e.preventDefault();
-      //   setLanguage($(this).text());
-      // });
-
-      $('#txt').focus();
-      $('#txt').bind('input propertychange', function() {
-        $('#result').html(JSON.stringify(sentiment($('#txt').val()), undefined, 2));
-      });
-    });
-
-
-
-
 /* decide what to say.
  * input: transcription of what user said
  * output: what bot should say
  */
 function decide_response(user_said) {
-    var response;
+  var response;
+  var practice_re = /practice\s(.+)/i;  // creating a regular expression
+  var practice_parse_array = user_said.match(practice_re) // parsing the input string with the regular expression
 
-    var practice_re = /practice\s(.+)/i;  
-    // creating a regular expression
-    
-    var practice_parse_array = user_said.match(practice_re) 
-    // parsing the input string with the regular expression
-
-    function WordCount(user_said) { 
+  // Counting numbers of user_said
+  function WordCount(user_said) { 
     return user_said.split(" ").length;
-    }
-    console.log("Word Count: " + WordCount(user_said));
-    // counting words
-    
-    console.log(practice_parse_array) 
-    // # Why it printed "null?"
-    // let's print the array content to the console log so we understand 
-    // what's inside the array.
-
-
-    if (practice_parse_array && state === "initial") {
-      response = "ok, let's practice " + practice_parse_array[1] + "Let's see........" + bq[Math.floor(Math.random() * bq.length)];
-      State = "initial"
-    } else if (user_said.toLowerCase().includes("plant") && state === "initial") {
-      response = "Hello human!";
-      state = "initial"
-    } 
-      else if (user_said.toLowerCase().includes("practice") && state === "initial") {
-      response = "What type of questions you want to practice?";
-      state = "selfRepair"
-    } else if (user_said.toLowerCase().includes("behavioral")
-      || user_said.toLowerCase().includes("yes") && state === "ABByes-b"
-      || user_said.toLowerCase().includes("behavioral") && state === "ABByes-b") {
-      response = "Okay! Let's see........" + bq[Math.floor(Math.random() * bq.length)];
-      state = "afterResult"
-    } else if (user_said.toLowerCase().includes("oddball")
-      || user_said.toLowerCase().includes("yes") && state === "ABByes-o"
-      || user_said.toLowerCase().includes("oddball") && state === "ABByes-o") {
-      response = "Okay! Let's see........" + oddballsQuestions[Math.floor(Math.random() * oddballsQuestions.length)];
-      state = "afterResult"
-    } else if (user_said.toLowerCase().includes("oq") && state === "selfRepair") {
-      response = "Do you mean oddball questions?";
-      state = "ABByes-o"
-    } else if (user_said.toLowerCase().includes("bq") && state === "selfRepair") {
-      response = "Do you mean behavioral questions?";
-      state = "ABByes-b"
-    } else if (user_said.toLowerCase().includes("no") && state === "ABByes-o"
-      || user_said.toLowerCase().includes("no") && state === "ABByes-b" ) {
-      response = "What type of questions you want to practice with me?";
-      state = "selfRepair"
-    } else if (user_said.toLowerCase().includes("no")  && state === "selfRepair"
-      || user_said.toLowerCase().includes("i don't know") && state === "selfRepair"
-      || user_said.toLowerCase().includes("not ready") && state === "selfRepair") {
-      response = "No worries. Let me know when you are ready.";
-      state = "selfRepair";
-    } else if (user_said.toLowerCase().includes("thanks") && state === "afterResult"
-      || user_said.toLowerCase().includes("thank") && state === "afterResult") {
-      response = "Anytime!";
-      state = "initial"
-    } else if (user_said.toLowerCase().includes("anxious")) {
-      response = "be yourself! You rock.";
-    } else if (user_said.toLowerCase().includes("relax")) {
-      response = "You know what? Take a nap. I always do that before any interviews. Seriously.";
-    } else if (user_said.toLowerCase().includes("bye")) {
-      response = "Good bye! Good luck.";
-      state = "initial"
-    } else {
-      response = "ummmmmmmmmmmmmm....pardon me? try something else?";
-    }
-    return response;
   }
+  var user_word_count = user_said.split(" ").length;
+  console.log("# user_word_count: " + user_word_count);
+
+  if (user_word_count > 10) {
+    word_count_evaluation = "the length of your answer is just right!"
+  } else {
+    word_count_evaluation = "I am afraid your answer is a bit of short. You might want to speak more."
+  }
+
+  // sentiment analysis
+  console.log(JSON.stringify(sentiment(user_said), undefined, 2))
+  console.log(JSON.stringify(sentiment(user_said).score))
+  var user_score = sentiment(user_said).score
+  
+  console.log("# user_said: " + user_said) 
+  console.log("# practice_parse_array: " + practice_parse_array)
+
+  var ramdon_question = questions[Math.floor(Math.random() * questions.length)]
+
+  if (user_said.toLowerCase().includes("last time"))  {
+    response = "You got it! Last time you practiced...... hmm....... " + practiced_q_array[practiced_q_array.length - 1]
+    + "And...... this is your answer......" + user_answer_array[user_answer_array.length - 1]
+    + "the total words are...." + user_word_count
+    + "And your score is....." + user_score
+
+    state = "initial"
+
+  } else if (practice_parse_array && state === "initial"
+    || user_said.toLowerCase().includes("practice") && state === "initial"
+    || user_said.toLowerCase().includes("yes") && state === "waiting"
+    || user_said.toLowerCase().includes("practice") && state === "waiting") {
+    response = "Sounds good! Let's do this." 
+    + "Let's see........"
+    + "Hmmm...."
+    + ramdon_question
+
+    practiced_q_array.push(ramdon_question);
+    console.log("## practiced_q_array: " + practiced_q_array.join(", "))
+
+    state = "listening"
+
+  } else if (user_said.toLowerCase().includes("hello plant") && state === "initial") {
+    response = "Hello human! My job is being a plant...... and helping you practice interviews.... Are you ready?";
+    state = "waiting"
+
+  } else if (user_said.toLowerCase().includes("goodbye")
+    || user_said.toLowerCase().includes("bye")) {
+    response = "bye bye, bye bye!";
+    state = "initial"
+
+  } else if (user_said.toLowerCase().includes("no") && state === "waiting"
+    || user_said.toLowerCase().includes("not ready") && state === "waiting")  {
+    response = "It's alright. Let me know when you are ready!"
+    state = "initial"
+
+  } else if (state === "listening")  {
+    user_answer_array.push(user_said);
+    console.log("## user_answer_array: " + user_answer_array.join(", "))
+
+    response = "Excellent! Your score is: " + user_score
+    + "And...... your words are: " + user_word_count
+    + word_count_evaluation
+    + "And...... this is your answer: " + user_answer_array[user_answer_array.length - 1]
+    + "And...... the question you just practiced is: " + practiced_q_array[practiced_q_array.length - 1]
+    state = "initial"
+
+  } else {
+    response = "Ops, what did you say?";
+  }
+
+  return response;
+  console.log("# response: " + response)
+}
+
+/* Load and print voices */
+function printVoices() {
+  // Fetch the available voices.
+  var voices = speechSynthesis.getVoices();
+  
+  // Loop through each of the voices.
+  voices.forEach(function(voice, i) {
+        console.log(voice.name)
+  });
+}
+
+printVoices();
+
 
 /* 
  *speak out some text 
@@ -210,9 +195,16 @@ function speak(text, callback) {
   /* Nonverbal actions at the start of robot's speaking */
   setBreathInc(fastBreathInc); 
 
+  // console.log("Voices: ")
+  // printVoices();
+
   var u = new SpeechSynthesisUtterance();
   u.text = text;
   u.lang = 'en-US';
+  u.volume = 1 //between 0.1
+  u.pitch = 0.3 //between 0 and 2
+  u.rate = 0.7 //between 0.1 and 5-ish
+  u.voice = speechSynthesis.getVoices().filter(function(voice) { return voice.name == "Karen"; })[0]; //pick a voice
 
   u.onend = function () {
       
