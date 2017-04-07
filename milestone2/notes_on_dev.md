@@ -19,14 +19,14 @@ _Noted by Linne - lhuang2@cca.edu_
 
 ### Todo list:
 
-1. Sentiment Analysis:
+- [x] 1. Sentiment Analysis:
    1. Examine text from `user_said` , instead of `#txt`
    2. `speak()` the examined result, instead of showing on the screen
-2. Length of Words:
+- [x] 2. Length of Words:
    1. `if` `said_length` is more than `500` words: `"Your answer is a little bit long!"`
-3. In the end of `state = "listening"`, speak out `"I got your answer. Let me see..."`
-4. Storing `user_answer` and `practiced_question` into `response_array = []`
-5. Speak out `response_array = []` 
+- [x] 3. In the end of `state = "listening"`, speak out `"I got your answer. Let me see..."`
+- [x] 4. Storing `user_answer` and `practiced_question` into `response_array = []`
+- [x] 5. Speak out `response_array = []` 
 
 
 
