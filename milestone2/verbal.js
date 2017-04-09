@@ -18,8 +18,10 @@ var slowBreathInc = 0.1
 var fastBreathInc = 0.6
 var slowTimeBetweenBlinks = 4000
 var fastTimeBetweenBlinks = 500
+
 var user_score = 0
 var afinn = afinn_en;
+var user_score_evaluation = "placeholder"
 
 var user_word_count = 0
 var word_count_evaluation = "placeholder"
@@ -51,6 +53,7 @@ function startDictation() {
     setTimeBetweenBlinks(fastTimeBetweenBlinks);
     setBreathInc(slowBreathInc);
     setEyeColor("gold");
+    // speak("I am a demo text. Test my speed! Test my tune!")
 
     recognition.continuous = false;
     recognition.interimResults = false;
@@ -108,6 +111,18 @@ function decide_response(user_said) {
     word_count_evaluation = "I am afraid your answer is a bit of short. You might want to speak more."
   }
 
+  if (user_score >= 10) {
+    user_score_evaluation = "Wow, that's a super positive answer!"
+  } else if (user_score >= 5) {
+    user_score_evaluation = "Your answer sounds positive." 
+  } else if (user_score >= 1) {
+    user_score_evaluation = "Your answer sounds somewhat positive."
+  } else if (user_score == 0) {
+    user_score_evaluation = "Your answer is neutral."
+  } else if (user_score <= 0) {
+    user_score_evaluation = "Oh-oh. your answer sounds a little bit negative."
+  }
+
   // sentiment analysis
   console.log(JSON.stringify(sentiment(user_said), undefined, 2))
   console.log(JSON.stringify(sentiment(user_said).score))
@@ -158,7 +173,8 @@ function decide_response(user_said) {
     user_answer_array.push(user_said);
     console.log("## user_answer_array: " + user_answer_array.join(", "))
 
-    response = "Excellent! Your score is: " + user_score
+    response = "Excellent! Your score is: " + user_score + 
+    + setTimeout(user_score_evaluation, 1500)
     + "And...... your words are: " + user_word_count
     + word_count_evaluation
     + "And...... this is your answer: " + user_answer_array[user_answer_array.length - 1]
@@ -203,7 +219,7 @@ function speak(text, callback) {
   u.lang = 'en-US';
   u.volume = 1 //between 0.1
   u.pitch = 0.3 //between 0 and 2
-  u.rate = 0.7 //between 0.1 and 5-ish
+  u.rate = 1 //between 0.1 and 5-ish //0.7 original
   u.voice = speechSynthesis.getVoices().filter(function(voice) { return voice.name == "Karen"; })[0]; //pick a voice
 
   u.onend = function () {
