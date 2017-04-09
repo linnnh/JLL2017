@@ -79,6 +79,8 @@ function startDictation() {
       var bot_response = decide_response(user_said)
       speak(bot_response)
 
+      document.getElementById("txt").value = bot_response;
+
       //`document.getElementById('labnol').submit();
     };
 
@@ -111,27 +113,27 @@ function decide_response(user_said) {
     word_count_evaluation = "I am afraid your answer is a bit of short. You might want to speak more."
   }
 
-  if (user_score >= 10) {
-    user_score_evaluation = "Wow, that's a super positive answer!"
-  } else if (user_score >= 5) {
-    user_score_evaluation = "Your answer sounds positive." 
-  } else if (user_score >= 1) {
-    user_score_evaluation = "Your answer sounds somewhat positive."
-  } else if (user_score == 0) {
-    user_score_evaluation = "Your answer is neutral."
-  } else if (user_score <= 0) {
-    user_score_evaluation = "Oh-oh. your answer sounds a little bit negative."
-  }
-
   // sentiment analysis
   console.log(JSON.stringify(sentiment(user_said), undefined, 2))
   console.log(JSON.stringify(sentiment(user_said).score))
   var user_score = sentiment(user_said).score
-  
+
+  if (user_score > 0) {
+    user_score_evaluation = "Your answer sounds positive!"
+  } else if (user_score == 0) {
+    user_score_evaluation = "Your answer sounds neutral."
+  } else {
+    user_score_evaluation = "Oh-oh. your answer sounds a little bit negative."
+  }
+
+  console.log("# user_score:" + user_score)
+  console.log("# user_score_evaluation: " + user_score_evaluation)
   console.log("# user_said: " + user_said) 
   console.log("# practice_parse_array: " + practice_parse_array)
 
   var ramdon_question = questions[Math.floor(Math.random() * questions.length)]
+
+
 
   if (user_said.toLowerCase().includes("last time"))  {
     response = "You got it! Last time you practiced...... hmm....... " + practiced_q_array[practiced_q_array.length - 1]
@@ -173,8 +175,8 @@ function decide_response(user_said) {
     user_answer_array.push(user_said);
     console.log("## user_answer_array: " + user_answer_array.join(", "))
 
-    response = "Excellent! Your score is: " + user_score + 
-    + setTimeout(user_score_evaluation, 1500)
+    response = 
+    "Excellent! Your score is: " + user_score + user_score_evaluation
     + "And...... your words are: " + user_word_count
     + word_count_evaluation
     + "And...... this is your answer: " + user_answer_array[user_answer_array.length - 1]
