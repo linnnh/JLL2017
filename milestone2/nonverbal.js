@@ -103,7 +103,7 @@ function redraw() {
   // clears the canvas
   canvas.width = canvas.width; 
 
-  context.drawImage(images["pbody"], x , y); //330 500
+  context.drawImage(images["pbody"], x + 400 , y + 290); //330 500
 
 
   // Left Eye
@@ -140,6 +140,9 @@ function redraw() {
   } else {
 	context.drawImage(images["parmright"], x + 560, y + 130 - breathAmt);
   } 
+
+  
+
 
 
 }
