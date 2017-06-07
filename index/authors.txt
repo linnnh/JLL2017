@@ -1,0 +1,9 @@
+Hello Plant: Interview Chatbot
+------------------------------
+
+Character & Dialog Design: Ji Won Yeom
+Visual Design: Li Song
+Interaction Development: Linne S. Huang
+
+Intructed by Maxim Makatchev
+California College of the Arts, 2017

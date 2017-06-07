@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Let's practice interview!</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat+Alternates" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nova+Mono" rel="stylesheet">
+
+
+  <!-- CSS Styles -->
+    <style>
+
+    body {
+      font-family: 'Nova Mono', monospace;
+      margin-top: 0rem;
+      background-image: url("images/back.png");
+      background-size: cover;
+    }
+
+    .speech {
+/*      border-bottom: 5px white solid; */
+      width: 50vw; 
+      padding: 0; 
+      margin: 0 auto;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+   .speech input {
+      font-family: 'Montserrat Alternates', sans-serif;
+      border: 0; 
+      font-size: 1.5rem;
+      letter-spacing: 0.03rem;
+      width: 40vw; 
+      display: inline-block; 
+      height: 40px;
+      background-color: transparent;
+    }
+
+    .subtitle {
+      width: 50vw;
+      padding: 0;
+      margin: 0 auto;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 1rem;
+      font-size: 0.8rem;
+    }
+
+    #canvasDiv {
+      display: block;
+      margin: auto;
+
+    }
+
+    .speech img {
+    /* float: right; */
+    /* width: 40px; */
+    position: fixed;
+    right: 20%;
+    top: 40%;
+    }
+
+    #searchForm {
+    position: fixed;
+    top: 5rem;
+    right: 10px;
+    /* transform: translateX(-50%); */
+    }
+
+    #txt, #transcript {
+      position: fixed;
+      left: 6%;
+      border: 0;
+      background: transparent;
+      font-size: 0.8rem;
+      letter-spacing: 0.01rem;
+      line-height: 1.3rem;
+      resize: none;
+    }
+
+    #txt {
+          top: 60%;
+    color: #417455;
+    }
+
+    #transcript {
+      top: 30%;
+
+    }
+
+    .instructions {
+    right: 0;
+    position: fixed;
+    top: 50%;
+    width: 30vw;
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-size: 0.9rem;
+    line-height: 1.5rem;
+    }
+
+    #Layer_1, #Layer_2 {
+      width: 30%;
+      top: 20%;
+      left: 3%;
+      position: fixed;
+    }
+
+    #Layer_2 {
+      top: 50%;
+    }
+
+    .plantBotTitle, .plantBotSubtitle {
+      position: absolute;
+      text-align: center;
+      left: 0;
+      right: 0;
+      border: 0;
+      margin: 0;
+    }
+
+    .plantBotTitle {
+      font-size: 2.2rem;
+      bottom: 10%;
+      color: #636363;
+    }
+
+    .plantBotSubtitle {
+      font-size: 1rem;
+      bottom: 6%;
+      font-family: 'Montserrat Alternates', sans-serif;
+      color: #636363;
+    }
+
+    .authors {
+      font-size: 0.6rem;
+      position: fixed;
+      bottom: 1%;
+      right: 1%;
+      font-family: 'Montserrat Alternates', sans-serif;
+    }
+
+    .authors a {
+      color: black;
+    }
+
+
+
+  </style>
+
+  </head>
+  <body>
+    <div id="canvasDiv"></div>
+    <div>
+      <p class="plantBotTitle">Hello Plant</p>
+      <p class="plantBotSubtitle">Interview Chatbot</p>
+    </div>
+
+    <!-- Search Form -->
+    <div id="searchForm">
+      <form id="labnol" method="get" action="https://www.google.com/search">
+        <div class="speech">
+<!--           <input type="text" name="q" id="transcript" placeholder="Practice interview with me." /> -->
+          <img id="start_img" onclick="startDictation()" src="mic.gif" />
+        </div>
+      </form>
+    </div>
+
+    <div>
+      <textarea readonly rows="10" cols="38" id="transcript" placeholder=""></textarea>
+      <textarea readonly rows="7" cols="38" id="txt" placeholder="" ></textarea>
+    </div>
+
+    <div class="instructions">
+      Hit the microphone and speak!<br>
+      <br>
+      <br>
+      Keywords You Can Ask:<br>
+      - "practiced questions"<br>
+      - "last time questions"<br>
+      - "Hello Plant"<br>
+      - "Goodbye" <br>
+    </div>
+
+    <div class="authors">
+      <a href="authors.txt">Made by Team JLL, 2017, California College of the Arts</a>
+    </div>
+
+
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 792 612"><defs><style>.cls-1{fill:#1d1d1b;}</style></defs><title>textBox_outlined_upArtboard 1</title><path class="cls-1" d="M733.78,88.76H188.85a29.75,29.75,0,0,0,.42-4.9c0-12.14-8.38-23.42-21.1-23.42-11.56,0-19.95,8.38-19.95,19.95a17.58,17.58,0,0,0,2.06,8.37h-17.8a29.75,29.75,0,0,0,.42-4.9c0-12.14-8.38-23.42-21.1-23.42-11.56,0-19.95,8.38-19.95,19.95a17.58,17.58,0,0,0,2.06,8.37H64.72a20.71,20.71,0,0,0-20.6,20.61v47.14h9V109.38A11.69,11.69,0,0,1,64.73,97.76h42a19.83,19.83,0,0,0,2.17.26c-4.62,4.63-10.41,7.23-16.77,8.67v16.77c14.31-3.08,30.46-12.21,37.35-25.7h33.63a19.83,19.83,0,0,0,2.17.26c-4.62,4.63-10.41,7.23-16.77,8.67v16.77c14.31-3.08,30.46-12.21,37.35-25.7H733.77a11.69,11.69,0,0,1,11.62,11.61V223h9V109.36A20.71,20.71,0,0,0,733.78,88.76Z"/></svg>
+
+
+<svg version="1.1" id="Layer_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 792 612" style="enable-background:new 0 0 792 612;" xml:space="preserve">
+<style type="text/css">
+  .st0{fill:#1D1D1B;}
+</style>
+<path class="st0" d="M742.1,466.6v48.2c0,6.4-5.2,11.6-11.6,11.7h-16.1c0.2-1.4,0.3-2.8,0.3-4.2c0-12.1-8.4-23.4-21.1-23.4
+  c-11.6,0-19.9,8.4-19.9,19.9c0,2.8,0.6,5.4,1.7,7.7h-17.3c0.2-1.4,0.3-2.8,0.3-4.2c0-12.1-8.4-23.4-21.1-23.4
+  c-11.6,0-19.9,8.4-19.9,19.9c0,2.8,0.6,5.4,1.7,7.7H61.5c-6.4,0-11.6-5.2-11.6-11.6v-116h-9v116c0,11.3,9.3,20.6,20.6,20.6h567.9
+  c1.6,0.5,3.3,0.9,5,1c-4.6,4.6-10.4,7.2-16.8,8.7v16.8c14.6-3.1,31-12.5,37.7-26.4h30.4c1.6,0.5,3.3,0.9,5,1
+  c-4.6,4.6-10.4,7.2-16.8,8.7v16.8c14.6-3.1,31-12.5,37.7-26.4h18.8c11.4,0,20.6-9.3,20.6-20.7v-48.2H742.1z"/>
+</svg>
+
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+    <!-- English words -->
+    <script src="afinn_en.js"></script>
+    <!-- Algorithm -->
+    <script src="sentiment.js"></script>
+
+
+    <script type="text/javascript" src="nonverbal.js"></script>
+    <script type="text/javascript" src="verbal.js"></script>
+    <script type="text/javascript">
+    	prepareCanvas(document.getElementById("canvasDiv"), 1000, 600);
+		  document.getElementById("canvasDiv").onmousedown = function() { 
+			 jump(); 
+      }
+    </script>
+  </body>
+</html>
